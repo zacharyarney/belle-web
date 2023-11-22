@@ -1,6 +1,7 @@
-import { ActionType } from '../context/actions';
-import { useTextContext } from '../hooks/useTextContext';
-import { WPM_OPTIONS } from '../util/constants';
+import { ActionType } from '../context/actions.ts';
+import { useTextContext } from '../hooks/useTextContext.ts';
+import { WPM_OPTIONS } from '../util/constants.ts';
+import React from 'react';
 
 export default function WpmSelector() {
   const { state, dispatch } = useTextContext();
@@ -10,7 +11,7 @@ export default function WpmSelector() {
   };
 
   const wpmOptions = (options: number[]) =>
-    options.map((option) => <option value={option}>{option} wpm</option>);
+    options.map(option => <option value={option}>{option} wpm</option>);
 
   return (
     <select value={state.wordsPerMinute} onChange={handleSelect}>

@@ -1,8 +1,8 @@
 import './App.css';
-import { TextProvider } from './context/TextContext';
-import TextBox from './components/TextBox';
-import Reader from './components/Reader';
-import WpmSelector from './components/WpmSelector';
+import { TextProvider } from './context/TextContext.tsx';
+import TextBox from './components/TextBox.tsx';
+import Reader from './components/Reader.tsx';
+import WpmSelector from './components/WpmSelector.tsx';
 
 function App() {
   return (

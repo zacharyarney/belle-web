@@ -19,7 +19,6 @@ export interface SetText {
 
 export interface TogglePlayText {
   type: ActionType.TogglePlayText;
-  payload: boolean;
 }
 
 export interface GetNextWord {

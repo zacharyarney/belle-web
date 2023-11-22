@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useReducer } from 'react';
-import { BelleState, initialBelleState } from './state';
-import { belleReducer } from '../reducers/textReducer';
-import { BelleActions } from './actions';
+import { BelleState, initialBelleState } from './state.ts';
+import { belleReducer } from '../reducers/textReducer.ts';
+import { BelleActions } from './actions.ts';
 
 interface TextProviderProps {
   children: ReactNode;

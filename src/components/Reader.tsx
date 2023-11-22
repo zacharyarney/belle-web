@@ -1,14 +1,13 @@
-import { ActionType } from '../context/actions';
-import { useTextContext } from '../hooks/useTextContext';
-import { usePlayText } from '../hooks/usePlayText';
+import { ActionType } from '../context/actions.ts';
+import { useTextContext } from '../hooks/useTextContext.ts';
+import { usePlayText } from '../hooks/usePlayText.ts';
 
 export default function Reader() {
   const { state, dispatch } = useTextContext();
 
   usePlayText(state, dispatch);
 
-  const handlePlayText = () =>
-    dispatch({ type: ActionType.TogglePlayText, payload: !state.isPlaying });
+  const handlePlayText = () => dispatch({ type: ActionType.TogglePlayText });
 
   const playButtonText = state.isPlaying ? 'pause' : 'play';
 

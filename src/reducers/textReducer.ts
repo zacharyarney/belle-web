@@ -1,10 +1,11 @@
-import { ActionType, BelleActions } from '../context/actions';
-import { BelleState } from '../context/state';
-import { getMilliseconds } from '../util/getMilliseconds';
+import { ActionType, BelleActions } from '../context/actions.ts';
+import { BelleState } from '../context/state.ts';
+import { getMilliseconds } from '../util/getMilliseconds.ts';
+import { NEW_LINE_REGEX, WHITE_SPACE_REGEX } from '../util/constants.ts';
 
 function setText(state: BelleState, payload: string) {
-  const noNewLines: string = payload.replace(/(?:\r\n|\r|\n)/g, ' \u00B6 ');
-  const wordArray: string[] = noNewLines.split(/(?:\s+)/g);
+  const noNewLines: string = payload.replace(NEW_LINE_REGEX, ' \u00B6 '); // replaces newlines with pilcrow
+  const wordArray: string[] = noNewLines.split(WHITE_SPACE_REGEX);
 
   return {
     ...state,
@@ -16,8 +17,8 @@ function setText(state: BelleState, payload: string) {
   };
 }
 
-function playText(state: BelleState, payload: boolean) {
-  return { ...state, isPlaying: payload };
+function playText(state: BelleState) {
+  return { ...state, isPlaying: !state.isPlaying };
 }
 
 function getNextWord(state: BelleState) {
@@ -42,7 +43,7 @@ export function belleReducer(
     case ActionType.SetText:
       return setText(state, action.payload);
     case ActionType.TogglePlayText:
-      return playText(state, action.payload);
+      return playText(state);
     case ActionType.GetNextWord:
       return getNextWord(state);
     case ActionType.SetWpm:

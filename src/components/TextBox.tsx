@@ -1,5 +1,5 @@
-import { ActionType } from '../context/actions';
-import { useTextContext } from '../hooks/useTextContext';
+import { ActionType } from '../context/actions.ts';
+import { useTextContext } from '../hooks/useTextContext.ts';
 
 export default function TextBox() {
   const { state, dispatch } = useTextContext();

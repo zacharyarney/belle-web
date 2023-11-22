@@ -1,4 +1,4 @@
-import { getMilliseconds } from '../util/getMilliseconds';
+import { getMilliseconds } from '../util/getMilliseconds.ts';
 
 export interface BelleState {
   text: string;
