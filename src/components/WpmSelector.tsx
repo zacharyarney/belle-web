@@ -10,7 +10,7 @@ export default function WpmSelector() {
   };
 
   const wpmOptions = (options: number[]) =>
-    options.map(option => <option value={option}>{option} wpm</option>);
+    options.map((option) => <option value={option}>{option} wpm</option>);
 
   return (
     <select value={state.wordsPerMinute} onChange={handleSelect}>

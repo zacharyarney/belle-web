@@ -1,10 +1,4 @@
-import {
-  createContext,
-  ReactNode,
-  SetStateAction,
-  useReducer,
-  useState,
-} from 'react';
+import { createContext, ReactNode, useReducer } from 'react';
 import { BelleState, initialBelleState } from './state';
 import { belleReducer } from '../reducers/textReducer';
 import { BelleActions } from './actions';
