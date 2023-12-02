@@ -1,4 +1,5 @@
 import { getMilliseconds } from '../util/getMilliseconds.ts';
+import { DEFAULT_WPM } from '../util/constants.ts';
 
 export interface BelleState {
   text: string;
@@ -11,11 +12,11 @@ export interface BelleState {
 }
 
 export const initialBelleState: BelleState = {
-  text: '',
+  text: ' ',
   inputText: '',
   textIndex: 0,
   wordArray: [],
   isPlaying: false,
-  wordsPerMinute: 240,
+  wordsPerMinute: DEFAULT_WPM,
   millisecondsPerWord: getMilliseconds(240),
 };
