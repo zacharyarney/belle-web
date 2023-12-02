@@ -13,7 +13,6 @@ function App() {
         <div className="w-full flex flex-col items-start space-y-8">
           <TextProvider>
             <Reader />
-            <WpmSelector />
             <TextBox />
           </TextProvider>
         </div>

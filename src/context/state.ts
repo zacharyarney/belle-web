@@ -12,7 +12,7 @@ export interface BelleState {
 }
 
 export const initialBelleState: BelleState = {
-  text: ' ',
+  text: '',
   inputText: '',
   textIndex: 0,
   wordArray: [],
