@@ -11,7 +11,11 @@ export default function WpmSelector() {
   };
 
   const wpmOptions = (options: number[]) =>
-    options.map(option => <option value={option}>{option} wpm</option>);
+    options.map(option => (
+      <option key={option} value={option}>
+        {option} wpm
+      </option>
+    ));
 
   return (
     <div className="relative w-64 text-neutral-950">

@@ -1,10 +1,10 @@
 export enum ActionType {
-  InputTextChange,
-  SetText,
-  TogglePlayText,
-  GetNextWord,
-  GetPrevWord,
-  SetWpm,
+  InputTextChange = 'InputTextChange',
+  SetText = 'SetText',
+  TogglePlayText = 'TogglePlayText',
+  GetNextWord = 'GetNextWord',
+  GetPrevWord = 'GetPrevWord',
+  SetWpm = 'SetWpm',
 }
 
 export interface InputTextChange {
