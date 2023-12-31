@@ -2,7 +2,6 @@ import './App.css';
 import { TextProvider } from './context/TextContext.tsx';
 import TextBox from './components/TextBox.tsx';
 import Reader from './components/Reader.tsx';
-import WpmSelector from './components/WpmSelector.tsx';
 import Footer from './components/Footer.tsx';
 
 function App() {
