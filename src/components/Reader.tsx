@@ -1,22 +1,24 @@
-import { ActionType } from '../context/actions.ts';
-import { useTextContext } from '../hooks/useTextContext.ts';
 import { usePlayText } from '../hooks/usePlayText.ts';
 import Button from './Button.tsx';
 import WpmSelector from './WpmSelector.tsx';
+import { useBelleStore } from '../store/store.ts';
 
 export default function Reader() {
-  const { state, dispatch } = useTextContext();
+  const wordArray = useBelleStore(state => state.wordArray);
+  const textIndex = useBelleStore(state => state.textIndex);
+  const isPlaying = useBelleStore(state => state.isPlaying);
+  const setIsPlaying = useBelleStore(state => state.setIsPlaying);
 
-  usePlayText(state, dispatch);
+  usePlayText();
 
-  const handlePlayText = () => dispatch({ type: ActionType.TogglePlayText });
+  const handlePlayText = () => setIsPlaying(!isPlaying);
 
-  const currentWord = state.wordArray[state.textIndex] ? (
-    <p className="text-xl">{state.wordArray[state.textIndex]}</p>
+  const currentWord = wordArray[textIndex] ? (
+    <p className="text-xl">{wordArray[textIndex]}</p>
   ) : (
     <p className="text-xl">&nbsp;</p>
   );
-  const playButtonText = state.isPlaying ? 'pause' : 'play';
+  const playButtonText = isPlaying ? 'pause' : 'play';
 
   return (
     <div className="w-full flex flex-wrap justify-between space-y-4">

@@ -1,5 +1,4 @@
 import './App.css';
-import { TextProvider } from './context/TextContext.tsx';
 import TextBox from './components/TextBox.tsx';
 import Reader from './components/Reader.tsx';
 import Footer from './components/Footer.tsx';
@@ -10,10 +9,8 @@ function App() {
       <h1 className="text-5xl font-bold">belle</h1>
       <div className="w-full flex flex-col justify-between items-center space-y-44 h-full">
         <div className="w-full flex flex-col items-start space-y-8">
-          <TextProvider>
-            <Reader />
-            <TextBox />
-          </TextProvider>
+          <Reader />
+          <TextBox />
         </div>
         <Footer />
       </div>

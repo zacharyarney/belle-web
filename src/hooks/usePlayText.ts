@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react';
-import { BelleState } from '../context/state.ts';
-import { ActionType, BelleActions } from '../context/actions.ts';
+import { useEffect } from 'react';
 import { END_OF_SENTENCE_REGEX } from '../util/constants.ts';
+import { useBelleStore } from '../store/store.ts';
 
-export function usePlayText(
-  state: BelleState,
-  dispatch: React.Dispatch<BelleActions>
-) {
+export function usePlayText() {
+  const state = useBelleStore();
+
   useEffect(() => {
     const currentWord = state.wordArray[state.textIndex];
     const isEndOfSentence = END_OF_SENTENCE_REGEX.test(currentWord);
@@ -16,15 +14,14 @@ export function usePlayText(
       : state.millisecondsPerWord;
     const interval = setInterval(() => {
       if (state.isPlaying && state.textIndex < state.wordArray.length) {
-        dispatch({ type: ActionType.GetNextWord });
+        state.setTextIndex(state.textIndex + 1);
       } else if (state.isPlaying && state.textIndex >= state.wordArray.length) {
-        dispatch({ type: ActionType.TogglePlayText });
+        state.setIsPlaying(!state.isPlaying);
       }
     }, intervalTime);
 
     return () => clearInterval(interval);
   }, [
-    dispatch,
     state.isPlaying,
     state.millisecondsPerWord,
     state.textIndex,
