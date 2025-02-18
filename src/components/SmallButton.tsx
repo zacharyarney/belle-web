@@ -1,10 +1,10 @@
-import { PropsWithChildren } from 'react';
+import { memo, PropsWithChildren } from 'react';
 
 interface SmallButtonProps {
   onClick: () => void;
 }
 
-export default function SmallButton(
+export default memo(function SmallButton(
   props: PropsWithChildren<SmallButtonProps>
 ) {
   return (
@@ -15,4 +15,4 @@ export default function SmallButton(
       {props.children}
     </button>
   );
-}
+});

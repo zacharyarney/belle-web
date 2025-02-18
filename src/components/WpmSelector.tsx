@@ -1,8 +1,8 @@
 import { WPM_OPTIONS } from '../util/constants.ts';
-import React from 'react';
+import React, { memo } from 'react';
 import { useBelleStore } from '../store/store.ts';
 
-export default function WpmSelector() {
+export default memo(function WpmSelector() {
   const wordsPerMinute = useBelleStore(state => state.wordsPerMinute);
   const setWordsPerMinute = useBelleStore(state => state.setWordsPerMinute);
 
@@ -38,4 +38,4 @@ export default function WpmSelector() {
       </div>
     </div>
   );
-}
+});

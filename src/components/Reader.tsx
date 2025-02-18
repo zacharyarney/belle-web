@@ -1,3 +1,5 @@
+import { useCallback } from 'react';
+import { useShallow } from 'zustand/react/shallow';
 import { usePlayText } from '../hooks/usePlayText.ts';
 import Button from './Button.tsx';
 import SmallButton from './SmallButton.tsx';
@@ -6,25 +8,25 @@ import { useBelleStore } from '../store/store.ts';
 import ReaderDisplay from './ReaderDisplay.tsx';
 
 export default function Reader() {
-  const wordArray = useBelleStore(state => state.wordArray);
-  const textIndex = useBelleStore(state => state.textIndex);
-  const isPlaying = useBelleStore(state => state.isPlaying);
-  const setIsPlaying = useBelleStore(state => state.setIsPlaying);
-  const setTextIndex = useBelleStore(state => state.setTextIndex);
+  const { wordArray, textIndex, isPlaying, setIsPlaying, setTextIndex } =
+    useBelleStore(useShallow(state => state));
 
   usePlayText();
 
-  const handlePlayText = () => setIsPlaying(!isPlaying);
-  const handlePrevWord = () => {
+  const handlePlayText = useCallback(
+    () => setIsPlaying(!isPlaying),
+    [isPlaying, setIsPlaying]
+  );
+  const handlePrevWord = useCallback(() => {
     if (textIndex > 0) {
       setTextIndex(textIndex - 1);
     }
-  };
-  const handleNextWord = () => {
+  }, [textIndex, setTextIndex]);
+  const handleNextWord = useCallback(() => {
     if (textIndex < wordArray.length - 1) {
       setTextIndex(textIndex + 1);
     }
-  };
+  }, [textIndex, setTextIndex]);
 
   const playButtonText = isPlaying ? 'pause' : 'play';
 
